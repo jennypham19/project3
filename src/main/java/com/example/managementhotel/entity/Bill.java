@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -34,7 +35,7 @@ public class Bill {
     @JoinColumn(name = "CUS_ID")
     private Customer id_cus;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "BILL_ID", referencedColumnName = "BILL_ID")
-    private Detail_Bill detail_bill;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROOM_ID")
+    private Room id_room;
 }

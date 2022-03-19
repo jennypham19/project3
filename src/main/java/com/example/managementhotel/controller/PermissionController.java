@@ -34,7 +34,7 @@ public class PermissionController {
     }
 
     @GetMapping("/permission/edit/{id}")
-    public String edit(@PathVariable String id, Model model){
+    public String edit(@PathVariable int id, Model model){
         Optional<Permission> perEdit = permissionService.findById(id);
         perEdit.ifPresent(per->model.addAttribute("per",per));
         return "permission/permission_edit";
@@ -42,7 +42,7 @@ public class PermissionController {
 
 
     @GetMapping("/permission/delete/{id}")
-    public String delete(@PathVariable String id){
+    public String delete(@PathVariable int id){
         permissionService.delete(id);
         return "redirect:/permission";
     }

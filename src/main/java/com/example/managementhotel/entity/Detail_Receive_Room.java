@@ -19,7 +19,7 @@ public class Detail_Receive_Room {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @Column(name = "DATE_RECEIVE")
     @Temporal(TemporalType.DATE)

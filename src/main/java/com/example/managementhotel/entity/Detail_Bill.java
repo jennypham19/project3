@@ -35,4 +35,8 @@ public class Detail_Bill {
 
     @Column(name = "TOTAL_PRICE")
     private float total_price;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "BILL_ID", referencedColumnName = "BILL_ID")
+    private Bill bill;
 }

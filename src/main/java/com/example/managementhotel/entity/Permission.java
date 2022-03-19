@@ -19,4 +19,9 @@ public class Permission {
 
     @Column(name = "PERMISSION_NAME")
     private String permission_name;
+
+    @Override
+    public String toString() {
+        return this.permission_name;
+    }
 }

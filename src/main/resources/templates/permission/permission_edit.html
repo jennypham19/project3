@@ -9,7 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-    <title>Thêm Nhân Viên</title>
+    <title>Thêm Quyền</title>
 
     <style>
         .register {
@@ -159,11 +159,11 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Thông Tin Quyền</h3>
-                        <form>
+                        <form action="" method="post" th:object="${per}">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tên Quyền *" value="" />
+                                    <input type="text" class="form-control" placeholder="Tên Quyền *" th:field="*{permission_name}" value=""  />
                                 </div>
                                 <input type="submit" class="btn btn-primary" name="btnthemchucvu" value="Cập nhật"/>
                             </div>

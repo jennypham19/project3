@@ -14,10 +14,10 @@ public interface PermissionService {
 
     Permission create(Permission permission);
 
-    Permission update(String id,Permission permission);
+    Permission update(int id,Permission permission);
 
-    void delete(String id);
+    void delete(int id);
 
-    Optional<Permission> findById(String id);
+    Optional<Permission> findById(int id);
 
 }

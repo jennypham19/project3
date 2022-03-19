@@ -26,17 +26,17 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Permission update(String id, Permission permission) {
+    public Permission update(int id, Permission permission) {
         return null;
     }
 
     @Override
-    public void delete(String id) {
-        permissionRepository.deleteById(Integer.valueOf(id));
+    public void delete(int id) {
+        permissionRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Permission> findById(String id) {
+    public Optional<Permission> findById(int id) {
         return Optional.empty();
     }
 }

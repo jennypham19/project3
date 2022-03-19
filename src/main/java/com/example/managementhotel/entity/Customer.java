@@ -31,7 +31,7 @@ public class Customer {
     @Column(name = "PHONE")
     private int phone;
 
-    @Column(name = "MATIONALITY")
+    @Column(name = "NATIONALITY")
     private String nationality;
 
     @Column(name = "ADDRESS")
