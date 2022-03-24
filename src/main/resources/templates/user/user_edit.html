@@ -9,7 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-    <title>Chỉnh sửa quyền</title>
+    <title>Thêm Nhân Viên</title>
 
     <style>
         .register {
@@ -136,7 +136,10 @@
             background-image: url('./img./hinhnen.jpg');
         }
         input.form-control{
-            margin:-39px 0 0 55px;
+             margin:-39px 0 0 120px;
+        }
+        input.form-checkbox {
+            margin:0 0 0 120px;
         }
     </style>
 </head>
@@ -148,28 +151,55 @@
         <div class="row">
             <div class="col-md-3 register-left">
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                <h3>Sửa Quyền</h3>
+                <h3>Chỉnh Sửa Người Dùng</h3>
                 <p>Vui Lòng Nhập Thông Tin </p>
 
             </div>
             <div class="col-md-9 register-right">
                 <ul class="nav nav-tabs nav-justified" id="myTab">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" th:href="@{/permission}" role="tab" aria-controls="home" aria-selected="true">Permission</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" th:href="@{/user}" role="tab" aria-controls="home" aria-selected="true">User</a>
                     </li>
 
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Thông Tin Quyền</h3>
-                        <form th:action="@{/permission/update/{id}(id=${per.permission_id})}" method="post" th:object="${per}">
+                        <h3 class="register-heading">Thông Tin Người Dùng</h3>
+                        <form th:action="@{/user/create}" method="post" th:object="${user}">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="Quyền">Quyền:</label>
-                                    <input type="text" class="form-control" placeholder="Tên Quyền*" th:field="*{permission_name}" />
+                                    <label for="name_user">Tên người dùng</label>
+                                    <input type="text" class="form-control" placeholder="Tên người dùng *" th:field="*{fullname}"/>
                                 </div>
-                                <input type="submit" class="btn btn-primary" name="btnthemchucvu" value="Cập nhật"/>
+                                 <div class="form-group">
+                                    <label for="job_title">Chức vụ</label>
+                                     <input type="text" class="form-control" placeholder="Chức vụ *" th:field="*{job_title}"/>
+                                 </div>
+                                <div class="form-group">
+                                    <label for="account">Tài khoản</label>
+                                    <input type="text" class="form-control" placeholder="Tài khoản *" th:field="*{user_name}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Mật khẩu</label>
+                                    <input type="text" class="form-control" placeholder="Mật khẩu *" th:field="*{password}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permission">Quyền</label>
+<!--                                         <select th:field="*{right}" class = "form-control"> -->
+<!--                                             <th:block th:each="per:${listPer}"> -->
+<!--                                                 <option th:text="${per.permission_name}" th:value="${per.permission_id}"></option> -->
+<!--                                             </th:block> -->
+<!--                                         </select> -->
+                                    <div>
+                                        <th:block th:field="*{right}">
+                                            <th:block th:each="pers:${listPer}">
+                                                <input class="form-checkbox" type="checkbox" th:text="${pers.permission_name}" th:value="${pers.permission_id}"/></br>
+                                            </th:block>
+                                        </th:block>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary" name="btnthemchucvu" value="Thêm"/>
                             </div>
                         </div>
                         </form>

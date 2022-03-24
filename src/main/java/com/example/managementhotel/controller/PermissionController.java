@@ -4,9 +4,13 @@ import com.example.managementhotel.entity.Permission;
 import com.example.managementhotel.service.PermissionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +36,17 @@ public class PermissionController {
         model.addAttribute("per",new Permission());
         return "permission/permission_add";
     }
+    @PostMapping("/permission/create")
+    public String create(@Validated Permission permission, BindingResult bindingResult, RedirectAttributes redirect){
+        if (bindingResult.hasErrors()){
+            redirect.addFlashAttribute("error","Thêm thất bại !!!!");
+            return "/permission/permission_add";
+        }else {
+            Permission per = permissionService.create(permission);
+            redirect.addFlashAttribute("success","Thêm thành công");
+            return "redirect:/permission";
+        }
+    }
 
     @GetMapping("/permission/edit/{id}")
     public String edit(@PathVariable int id, Model model){
@@ -40,6 +55,17 @@ public class PermissionController {
         return "permission/permission_edit";
     }
 
+    @PostMapping("/permission/update/{id}")
+    public String update(@Validated Permission permission,@PathVariable int id, BindingResult bindingResult,RedirectAttributes redirect){
+        if(bindingResult.hasErrors()){
+            redirect.addFlashAttribute("error","Cập nhật thất bại !!!!");
+            return "/permission/permission_edit";
+        }else {
+            permissionService.update(id, permission);
+            redirect.addFlashAttribute("success", "Cập nhật thành công!!!");
+            return "redirect:/permission";
+        }
+    }
 
     @GetMapping("/permission/delete/{id}")
     public String delete(@PathVariable int id){

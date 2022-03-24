@@ -135,6 +135,12 @@
         body {
             background-image: url('./img./hinhnen.jpg');
         }
+        input.form-control{
+             margin:-39px 0 0 120px;
+        }
+        input.form-checkbox {
+            margin:0 0 0 120px;
+        }
     </style>
 </head>
 
@@ -159,20 +165,39 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Thông Tin Người Dùng</h3>
-                        <form>
+                        <form th:action="@{/user/create}" method="post" th:object="${user}">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tên người dùng *" value="" />
+                                    <label for="name_user">Tên người dùng</label>
+                                    <input type="text" class="form-control" placeholder="Tên người dùng *" th:field="*{fullname}"/>
                                 </div>
                                  <div class="form-group">
-                                     <input type="text" class="form-control" placeholder="Chức vụ *" value="" />
+                                    <label for="job_title">Chức vụ</label>
+                                     <input type="text" class="form-control" placeholder="Chức vụ *" th:field="*{job_title}"/>
                                  </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tài khoản *" value="" />
+                                    <label for="account">Tài khoản</label>
+                                    <input type="text" class="form-control" placeholder="Tài khoản *" th:field="*{user_name}"/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Mật khẩu *" value="" />
+                                    <label for="password">Mật khẩu</label>
+                                    <input type="text" class="form-control" placeholder="Mật khẩu *" th:field="*{password}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permission">Quyền</label>
+<!--                                         <select th:field="*{right}" class = "form-control"> -->
+<!--                                             <th:block th:each="per:${listPer}"> -->
+<!--                                                 <option th:text="${per.permission_name}" th:value="${per.permission_id}"></option> -->
+<!--                                             </th:block> -->
+<!--                                         </select> -->
+                                    <div>
+                                        <th:block th:field="*{right}">
+                                            <th:block th:each="per:${listPer}">
+                                                <input class="form-checkbox" type="checkbox" th:text="${per.permission_name}" th:value="${per.permission_id}"/></br>
+                                            </th:block>
+                                        </th:block>
+                                    </div>
                                 </div>
                                 <input type="submit" class="btn btn-primary" name="btnthemchucvu" value="Thêm"/>
                             </div>

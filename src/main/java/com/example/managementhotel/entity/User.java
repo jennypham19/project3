@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID", nullable = false)
     private int user_id;
 
@@ -31,7 +31,7 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-    @ManyToMany()
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_permission",
             joinColumns = @JoinColumn(name ="USER_ID"),

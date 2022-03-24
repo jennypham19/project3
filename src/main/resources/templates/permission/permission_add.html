@@ -159,11 +159,11 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Thông Tin Quyền</h3>
-                        <form>
+                        <form th:action="@{/permission/create}" method="post" th:object="${per}">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tên Quyền *" value="" />
+                                    <input type="text" class="form-control" placeholder="Tên Quyền *" th:field="*{permission_name}" />
                                 </div>
                                 <input type="submit" class="btn btn-primary" name="btnthemchucvu" value="Thêm"/>
                             </div>

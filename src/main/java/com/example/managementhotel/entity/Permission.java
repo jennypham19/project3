@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,6 +20,9 @@ public class Permission {
 
     @Column(name = "PERMISSION_NAME")
     private String permission_name;
+
+    @ManyToMany(mappedBy = "right",fetch = FetchType.EAGER)
+    private Set<User> users;
 
     @Override
     public String toString() {

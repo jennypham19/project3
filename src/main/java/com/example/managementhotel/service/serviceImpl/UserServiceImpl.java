@@ -1,7 +1,9 @@
 package com.example.managementhotel.service.serviceImpl;
 
 import com.example.managementhotel.entity.User;
+import com.example.managementhotel.repository.PermissionRepository;
 import com.example.managementhotel.repository.UserRepository;
+import com.example.managementhotel.service.PermissionService;
 import com.example.managementhotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
@@ -32,11 +34,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(int id) {
-
+        userRepository.deleteById(id);
     }
 
     @Override
     public Optional<User> findById(int id) {
-        return Optional.empty();
+        return userRepository.findById(id);
     }
 }

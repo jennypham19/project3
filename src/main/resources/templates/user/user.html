@@ -55,7 +55,7 @@
                     <div th:if="${success}"
                     	class="row alert alert-success alert-dismissible">
                     		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    			<span aria-hidden="true">Ã—</span>
+                    			<span aria-hidden="true">x</span>
                     		</button>
                     		<span th:text="${success}"></span>
                     </div>
@@ -74,6 +74,7 @@
                                             <th>Chức vụ</th>
                                             <th>Tài khoản</th>
                                             <th>Mật khẩu</th>
+                                            <th>Quyền<th>
                                             <th>EDIT</th>
                                         </tr>
                                     </thead>
@@ -84,6 +85,7 @@
                                             <th>Chức vụ</th>
                                             <th>Tài khoản</th>
                                             <th>Mật khẩu</th>
+                                            <th>Quyền<th>
                                             <th>EDIT</th>
                                         </tr>
                                     </tfoot>
@@ -94,6 +96,7 @@
                                             <td th:text="${user.job_title}"></td>
                                             <td th:text="${user.user_name}"></td>
                                             <td th:text="${user.password}"></td>
+                                            <td th:text="${user.right}"></td>
                                             <td>
                                                 <a th:href="@{/user/edit/{id}(id=${user.user_id})}"><i class="bi bi-pencil-fill"></i></a>
                                                 <a th:href="@{/user/delete/{id}(id=${user.user_id})}"><i class="bi bi-x-circle-fill"></i></a>

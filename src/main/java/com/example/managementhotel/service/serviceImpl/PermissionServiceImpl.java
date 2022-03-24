@@ -22,12 +22,20 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public Permission create(Permission permission) {
-        return null;
+        if (permission.getPermission_name() == null || permission.getPermission_name().isEmpty()){
+            return null;
+        }
+        return permissionRepository.save(permission);
     }
 
     @Override
     public Permission update(int id, Permission permission) {
-        return null;
+        Permission per = permissionRepository.findById(id).orElse(null);
+        if(per == null){
+            return null;
+        }
+        per.setPermission_name(permission.getPermission_name());
+        return permissionRepository.save(per);
     }
 
     @Override
@@ -37,6 +45,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public Optional<Permission> findById(int id) {
-        return Optional.empty();
+
+        return permissionRepository.findById(id);
     }
 }
